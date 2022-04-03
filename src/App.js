@@ -1,11 +1,5 @@
-import './App.css';
-
 function App() {
-  return (
-    <div className="container">
-
-    </div>
-  );
+  return <div className="container">React 18</div>;
 }
 
 export default App;
