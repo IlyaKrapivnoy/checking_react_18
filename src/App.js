@@ -11,12 +11,13 @@ function App() {
   };
 
   const [filter, setFilter] = useState("");
-  const [isPending, startTransition] = useTransition();
+  // const [isPending, startTransition] = useTransition();
 
   const changeHandler = (e) => {
-    startTransition(() => {
-      setFilter(e.target.value);
-    });
+    // startTransition(() => {
+    //   setFilter(e.target.value);
+    // });
+    setFilter(e.target.value);
   };
 
   const items = filterItems(filter);
@@ -27,7 +28,7 @@ function App() {
         <h1>React 18</h1>
 
         <input type="text" onChange={changeHandler} />
-        {isPending && <h2>Changing state</h2>}
+        {/*{isPending && <h2>Changing state</h2>}*/}
         <List items={items} />
       </div>
     </>
