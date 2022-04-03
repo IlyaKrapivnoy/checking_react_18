@@ -11,7 +11,7 @@ function App() {
   };
 
   const [filter, setFilter] = useState("");
-  const [, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const changeHandler = (e) => {
     startTransition(() => {
@@ -27,6 +27,7 @@ function App() {
         <h1>React 18</h1>
 
         <input type="text" onChange={changeHandler} />
+        {isPending && <h2>Changing state</h2>}
         <List items={items} />
       </div>
     </>
