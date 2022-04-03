@@ -1,5 +1,33 @@
+import List from "./List";
+import { useState } from "react";
+
 function App() {
-  return <div className="container">React 18</div>;
+  const source = new Array(1200)
+    .fill("")
+    .map((_, i) => ({ id: i, name: `Item ${i + 1}` }));
+
+  const filterItems = (filter) => {
+    return filter ? source.filter((i) => i.name.includes(filter)) : source;
+  };
+
+  const [filter, setFilter] = useState("");
+
+  const changeHandler = (e) => {
+    setFilter(e.target.value);
+  };
+
+  const items = filterItems(filter);
+
+  return (
+    <>
+      <div className="container">
+        <h1>React 18</h1>
+
+        <input type="text" onChange={changeHandler} />
+        <List items={items} />
+      </div>
+    </>
+  );
 }
 
 export default App;
