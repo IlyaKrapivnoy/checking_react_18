@@ -1,8 +1,8 @@
 import List from "./List";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 
 function App() {
-  const source = new Array(1200)
+  const source = new Array(12000)
     .fill("")
     .map((_, i) => ({ id: i, name: `Item ${i + 1}` }));
 
@@ -11,9 +11,12 @@ function App() {
   };
 
   const [filter, setFilter] = useState("");
+  const [, startTransition] = useTransition();
 
   const changeHandler = (e) => {
-    setFilter(e.target.value);
+    startTransition(() => {
+      setFilter(e.target.value);
+    });
   };
 
   const items = filterItems(filter);
